@@ -10,6 +10,7 @@ var colours = [
 var squares = document.querySelectorAll(".square")
 var pickedColour = colours[3]
 var colourDisplay = document.getElementById("colourDisplay")
+var messagesDisplay = document.querySelector("#message")
 
 colourDisplay.textContent = pickedColour
 
@@ -23,9 +24,10 @@ for(var i = 0; i < squares.length; i++) {
         var clickedColour = this.style.backgroundColor
         //compare colour to pickedColour
         if(clickedColour === pickedColour){
-            alert("Correct!")
+            messagesDisplay.textContent = "Correct!"
         } else {
             this.style.background = "#232323"
+            messagesDisplay.textContent = "Try Again"
         }
     })
 }
