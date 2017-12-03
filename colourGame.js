@@ -1,9 +1,9 @@
 var colours = generateRandomColours(6)
-
 var squares = document.querySelectorAll(".square")
 var pickedColour = pickColour()
 var colourDisplay = document.getElementById("colourDisplay")
 var messagesDisplay = document.querySelector("#message")
+var h1 = document.querySelector("h1")
 
 colourDisplay.textContent = pickedColour
 
@@ -19,6 +19,7 @@ for(var i = 0; i < squares.length; i++) {
         if(clickedColour === pickedColour){
             messagesDisplay.textContent = "Correct!"
             changeColours(clickedColour)
+            h1.style.backgroundColor = clickedColour
         } else {
             this.style.background = "#232323"
             messagesDisplay.textContent = "Try Again"
@@ -58,5 +59,5 @@ function randomColour(){
     var g = Math.floor(Math.random() * 256)
     //pick a "blue" from 0 - 255
     var b = Math.floor(Math.random() * 256)
-    return "rgb(" + r + "," + g + "," + b + ")"
+    return "rgb(" + r + ", " + g + ", " + b + ")"
 }
