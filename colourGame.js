@@ -14,6 +14,13 @@ easyBtn.addEventListener('click', function(){
     colours = generateRandomColours(3)
     pickedColour = pickColour()
     colourDisplay.textContent = pickedColour
+    for(var i = 0; i < squares.length; i++){
+        if(colours[i]){
+            squares[i].style.background = colours[i]
+        } else {
+            squares[i].style.display = "none"
+        }
+    }
 })
 
 hardBtn.addEventListener('click', function(){
