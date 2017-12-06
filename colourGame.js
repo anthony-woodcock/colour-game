@@ -26,6 +26,13 @@ easyBtn.addEventListener('click', function(){
 hardBtn.addEventListener('click', function(){
     hardBtn.classList.add("selected")
     easyBtn.classList.remove("selected")
+    colours = generateRandomColours(6)
+    pickedColour = pickColour()
+    colourDisplay.textContent = pickedColour
+    for(var i = 0; i < squares.length; i++){
+            squares[i].style.background = colours[i]
+            squares[i].style.display = "block"
+    }
 })
 
 resetButton.addEventListener('click',function(){
