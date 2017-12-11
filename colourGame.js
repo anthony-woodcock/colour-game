@@ -8,19 +8,25 @@ var h1 = document.querySelector("h1")
 var resetButton = document.querySelector("#reset")
 var modeButtons = document.querySelectorAll(".mode")
 
-for(var i = 0; i < modeButtons.length; i++){
-    modeButtons[i].addEventListener("click", function(){
-        modeButtons[0].classList.remove("selected")
-        modeButtons[1].classList.remove("selected")
-        this.classList.add("selected")
-        this.textContent === "Easy" ? numSquares = 3: numSquares = 6
-        //figure out how many squres to show
-        //pick new colours
-        //pick a new pickedColor
-        //update page to reflect changes
-        reset()
-    })
+init()
+
+function init() {
+    for(var i = 0; i < modeButtons.length; i++){
+        modeButtons[i].addEventListener("click", function(){
+            modeButtons[0].classList.remove("selected")
+            modeButtons[1].classList.remove("selected")
+            this.classList.add("selected")
+            this.textContent === "Easy" ? numSquares = 3: numSquares = 6
+            //figure out how many squres to show
+            //pick new colours
+            //pick a new pickedColor
+            //update page to reflect changes
+            reset()
+        })
+    }
 }
+
+
 
 function reset(){
     colours = generateRandomColours(numSquares)
@@ -44,35 +50,6 @@ function reset(){
     h1.style.background = "steelblue"
 }
 
-
-// easyBtn.addEventListener('click', function(){
-//     hardBtn.classList.remove("selected")
-//     easyBtn.classList.add("selected")
-//     numSquares = 3
-//     colours = generateRandomColours(numSquares)
-//     pickedColour = pickColour()
-//     colourDisplay.textContent = pickedColour
-//     for(var i = 0; i < squares.length; i++){
-//         if(colours[i]){
-//             squares[i].style.background = colours[i]
-//         } else {
-//             squares[i].style.display = "none"
-//         }
-//     }
-// })
-
-// hardBtn.addEventListener('click', function(){
-//     hardBtn.classList.add("selected")
-//     easyBtn.classList.remove("selected")
-//     numSquares = 6
-//     colours = generateRandomColours(numSquares)
-//     pickedColour = pickColour()
-//     colourDisplay.textContent = pickedColour
-//     for(var i = 0; i < squares.length; i++){
-//             squares[i].style.background = colours[i]
-//             squares[i].style.display = "block"
-//     }
-// })
 
 resetButton.addEventListener('click',function(){
     reset()
