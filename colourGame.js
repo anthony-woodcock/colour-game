@@ -11,6 +11,12 @@ var modeButtons = document.querySelectorAll(".mode")
 init()
 
 function init() {
+    setUpModeButtons()
+    setUpSquares()
+    reset()
+}
+
+function setUpModeButtons(){
     for(var i = 0; i < modeButtons.length; i++){
         modeButtons[i].addEventListener("click", function(){
             modeButtons[0].classList.remove("selected")
@@ -21,7 +27,9 @@ function init() {
             reset()
         })
     }
+}
 
+function setUpSquares(){
     for(var i = 0; i < squares.length; i++) {
         squares[i].addEventListener("click", function(){
             var clickedColour = this.style.backgroundColor
@@ -36,11 +44,7 @@ function init() {
             }
         })
     }
-    
-    reset()
 }
-
-
 
 function reset(){
     colours = generateRandomColours(numSquares)
@@ -68,9 +72,6 @@ function reset(){
 resetButton.addEventListener('click',function(){
     reset()
 })
-
-colourDisplay.textContent = pickedColour
-
 
 function changeColours(colour){
     //loop through all sqaures
