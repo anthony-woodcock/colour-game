@@ -1,7 +1,7 @@
 var numSquares = 6
-var colours = generateRandomColours(numSquares)
+var colours = []
+var pickedColour 
 var squares = document.querySelectorAll(".square")
-var pickedColour = pickColour()
 var colourDisplay = document.getElementById("colourDisplay")
 var messagesDisplay = document.querySelector("#message")
 var h1 = document.querySelector("h1")
@@ -17,13 +17,27 @@ function init() {
             modeButtons[1].classList.remove("selected")
             this.classList.add("selected")
             this.textContent === "Easy" ? numSquares = 3: numSquares = 6
-            //figure out how many squres to show
-            //pick new colours
-            //pick a new pickedColor
-            //update page to reflect changes
+
             reset()
         })
     }
+
+    for(var i = 0; i < squares.length; i++) {
+        squares[i].addEventListener("click", function(){
+            var clickedColour = this.style.backgroundColor
+            if(clickedColour === pickedColour){
+                messagesDisplay.textContent = "Correct!"
+                resetButton.textContent = "Play Again?"
+                changeColours(clickedColour)
+                h1.style.backgroundColor = clickedColour
+            } else {
+                this.style.background = "#232323"
+                messagesDisplay.textContent = "Try Again"
+            }
+        })
+    }
+    
+    reset()
 }
 
 
@@ -57,26 +71,6 @@ resetButton.addEventListener('click',function(){
 
 colourDisplay.textContent = pickedColour
 
-for(var i = 0; i < squares.length; i++) {
-    //add initial colours to squares
-    squares[i].style.backgroundColor = colours[i]
-
-    //add click listeners to squares
-    squares[i].addEventListener("click", function(){
-        //grab colour of clicked square
-        var clickedColour = this.style.backgroundColor
-        //compare colour to pickedColour
-        if(clickedColour === pickedColour){
-            messagesDisplay.textContent = "Correct!"
-            resetButton.textContent = "Play Again?"
-            changeColours(clickedColour)
-            h1.style.backgroundColor = clickedColour
-        } else {
-            this.style.background = "#232323"
-            messagesDisplay.textContent = "Try Again"
-        }
-    })
-}
 
 function changeColours(colour){
     //loop through all sqaures
